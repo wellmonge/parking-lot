@@ -10,6 +10,98 @@ import { SocialIcon } from "react-native-elements";
 
 import { FontAwesome } from "@expo/vector-icons";
 
+const styles = {
+  caption: {
+    letterSpacing: 1,
+    fontSize: 12
+  },
+  container: {
+    flex: 1,
+    padding: 40,
+    justifyContent: "center",
+    flexDirection: "column",
+    backgroundColor: "#2980b9"
+  },
+  header: {
+    shadowColor: "#af5109",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 1,
+    height: 72,
+    backgroundColor: "#fff"
+  },
+  formContainer: {
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "#af5109",
+    shadowColor: "#af5109",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 1,
+    backgroundColor: "#fff",
+    margin: 16
+  },
+  userContainer: {
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    marginLeft: 5,
+    marginRight: 5
+  },
+  passwordContainer: {
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    borderTopWidth: 1,
+    borderTopColor: "#e8ebee",
+    marginLeft: 5,
+    marginRight: 5
+  },
+  iconContainer: {
+    width: 42,
+    borderRightWidth: 1,
+    borderRightColor: "#e8ebee",
+    padding: 5,
+    margin: 5,
+    marginLeft: 0,
+    alignSelf: "center"
+  },
+  user: {
+    flex: 1
+  },
+  password: {
+    flex: 1
+  },
+  buttonContainer: {
+    flexDirection: "column",
+    backgroundColor: "#ecf0f1",
+    justifyContent: "center",
+    margin: 16,
+    marginTop: 0,
+    borderWidth: 1,
+    borderRadius: 2,
+    borderColor: "#af5109",
+    shadowColor: "#af5109",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 1
+  },
+  content: {
+    height: 48
+  },
+  button: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  message: {
+    alignSelf: "center",
+    color: "#fff"
+  }
+};
+
 class LoginScreen extends Component {
   static navigationOptions = {
     header : null
@@ -115,97 +207,5 @@ class LoginScreen extends Component {
     );
   }
 }
-
-const styles = {
-  caption: {
-    letterSpacing: 1,
-    fontSize: 12
-  },
-  container: {
-    flex: 1,
-    padding: 40,
-    justifyContent: "center",
-    flexDirection: "column",
-    backgroundColor: "#2980b9"
-  },
-  header: {
-    shadowColor: "#af5109",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 1,
-    height: 72,
-    backgroundColor: "#fff"
-  },
-  formContainer: {
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: "#af5109",
-    shadowColor: "#af5109",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 1,
-    backgroundColor: "#fff",
-    margin: 16
-  },
-  userContainer: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    marginLeft: 5,
-    marginRight: 5
-  },
-  passwordContainer: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    borderTopWidth: 1,
-    borderTopColor: "#e8ebee",
-    marginLeft: 5,
-    marginRight: 5
-  },
-  iconContainer: {
-    width: 42,
-    borderRightWidth: 1,
-    borderRightColor: "#e8ebee",
-    padding: 5,
-    margin: 5,
-    marginLeft: 0,
-    alignSelf: "center"
-  },
-  user: {
-    flex: 1
-  },
-  password: {
-    flex: 1
-  },
-  buttonContainer: {
-    flexDirection: "column",
-    backgroundColor: "#ecf0f1",
-    justifyContent: "center",
-    margin: 16,
-    marginTop: 0,
-    borderWidth: 1,
-    borderRadius: 2,
-    borderColor: "#af5109",
-    shadowColor: "#af5109",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 1
-  },
-  content: {
-    height: 48
-  },
-  button: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  message: {
-    alignSelf: "center",
-    color: "#fff"
-  }
-};
 
 export default LoginScreen;

@@ -5,13 +5,10 @@
     import { Card, Button, Avatar, Text, SearchBar } from 'react-native-elements'
     import Ionicons from "../../node_modules/@expo/vector-icons/Ionicons";
 
-    import RNTesseractOcr from 'react-native-tesseract-ocr';
-   var img = require("../images/teste.jpg");
-
     const styles = {
         iconAlign: (Platform.OS == "ios"? { padding: 5} : { alignSelf: "center"}),
         drawerToggle: (Platform.OS == "ios"? {} : {padding: 20}),
-        containerStyle: (Platform.OS == "ios"? {width:340 } : {width:360 }),
+        containerStyle: (Platform.OS == "ios"? {width:340 } : {width:350 }),
         headerStyle: { backgroundColor: "#fff"},
         headerTitleStyle: {fontWeight: "bold"},
     }
@@ -85,6 +82,14 @@
         }
           
         _keyExtractor = (item, index) => item.Login;
+
+        _storeData = async (collaborator) => {
+            try {
+              await AsyncStorage.setItem('@MySuperStore:collaborator', JSON.Stringify(collaborator));
+            } catch (error) {
+              // Error saving data
+            }
+          }
         
         _retrieveData = async ()=> {
             try {
@@ -92,15 +97,16 @@
                     'https://aniversario.amcom.com.br/sistema/estacionamento'
                 );
                 let responseJson = await response.json();
+                this._storeData(responseJson);
+    
                 this.setState({collaborator: responseJson});
             } catch (error) {
-            console.error(error);
+                console.error(error);
             }
         }
 
         componentDidMount(){
-            this._retrieveData();  
-            //this.recognize();
+            this._retrieveData(); 
         }
 
         render() {
