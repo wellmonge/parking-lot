@@ -21,19 +21,7 @@
                     headerStyle: styles.headerStyle, 
                     headerTintColor: "#000", 
                     headerTitleStyle: styles.headerTitleStyle, 
-                    headerLeft: (
-                        <View style={styles.containerStyle}>
-                            <SearchBar
-                                containerStyle={{flex:1, margin: 0}}
-                                lightTheme
-                                onChangeText={function name(params) {
-                
-                                }}
-                                onClearText={function (params) {
-                
-                                }}
-                                placeholder='Filtrar' />
-                    </View>),
+                    headerTitle: `AMCOM`,
                     headerRight: (
                                 <TouchableOpacity
                                     style={styles.drawerToggle}
@@ -82,14 +70,6 @@
         }
           
         _keyExtractor = (item, index) => item.Login;
-
-        _storeData = async (collaborator) => {
-            try {
-              await AsyncStorage.setItem('@MySuperStore:collaborator', JSON.Stringify(collaborator));
-            } catch (error) {
-              // Error saving data
-            }
-          }
         
         _retrieveData = async ()=> {
             try {
@@ -97,11 +77,9 @@
                     'https://aniversario.amcom.com.br/sistema/estacionamento'
                 );
                 let responseJson = await response.json();
-                this._storeData(responseJson);
-    
                 this.setState({collaborator: responseJson});
             } catch (error) {
-                console.error(error);
+            console.error(error);
             }
         }
 
@@ -156,6 +134,7 @@
                                     </Text>
                                 </View>
                             </View>
+
                             <Button
                                 icon={{name: 'code'}}
                                 backgroundColor='#e67e22'

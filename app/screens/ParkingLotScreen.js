@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, TouchableOpacity, AsyncStorage } from "react-native";
-import { Card, Button } from 'react-native-elements';
+import { View, TextInput, TouchableOpacity } from "react-native";
+import { Card, Button, Text,SearchBar} from 'react-native-elements';
 import { FontAwesome } from "@expo/vector-icons";
-import { map } from "../../node_modules/rxjs/operators";
 
 const styles = {
   iconAlign: { alignSelf: "center"},
@@ -19,17 +18,17 @@ class ParkingLotScreen extends Component {
               headerTitleStyle: styles.headerTitleStyle, 
               headerTitle: 'AMCOM',
               headerRight: (
-                          <TouchableOpacity
-                              style={styles.drawerToggle}
-                              onPress={() => {
-                              navigation.navigate("DrawerToggle");
-                          }}>
-                              <FontAwesome 
-                                  style={styles.iconAlign} 
-                                  name="bars" 
-                                  size={28} 
-                                  color="#333333"/>
-                          </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.drawerToggle}
+                    onPress={() => {
+                    navigation.navigate("DrawerToggle");
+                }}>
+                    <FontAwesome 
+                        style={styles.iconAlign} 
+                        name="bars" 
+                        size={28} 
+                        color="#333333"/>
+                </TouchableOpacity>
           )};
   };
 
@@ -44,6 +43,7 @@ class ParkingLotScreen extends Component {
   componentDidMount(){
     this._retrieveData();
   }
+  
   _retrieveData = async ()=> {
     try {
         let response = await fetch(
@@ -55,20 +55,7 @@ class ParkingLotScreen extends Component {
     } catch (error) {
         console.error(error);
     }
-}
-
-
-  // _retrieveData = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem('@MySuperStore:collaborator');
-  //     if (value !== null) {   
-  //       this.setState({collaborator: JSON.parse(value)})
-  //     }
-  //    } catch (error) {
-    
-  //   }
-  // }
-
+  }
   
   render() {
     return (<View 
@@ -77,31 +64,26 @@ class ParkingLotScreen extends Component {
                 backgroundColor: "#2980b9"
               }}
             >
-              <Text>
-                AMCOM
-              </Text>
-              <TextInput
-                style={{height: 40, backgroundColor:'white', borderColor: 'gray', borderWidth: 1}}
-                onChangeText={(text) => this.setState({text})}
-                value={this.state.text}
-              />
-            <Button title={'BUSCAR'} onPress={() => {
-              
-              if (this.state.collaborator.length > 0){
-                
-                  const filteredCollaborators = this.state.collaborator.filter((item)=>{
-                    return item.PlacaCarro == this.state.text; 
-                  });
-                  alert(JSON.stringify(filteredCollaborators[0]));
+                <SearchBar
+                  lightTheme
+                  onChangeText={(text) => this.setState({text})}
+                  onClearText={function (params) {
 
-              }else{
-                alert('não encontrado');
-              }
-              
+                  }}
+                  placeholder='Filtrar' />               
+<Card
+  title='HELLO WORLD'
+  image={require('../images/teste.jpg')}>
+  <Text style={{marginBottom: 10}}>
+    The idea with React Native Elements is more about component structure than actual design.
+  </Text>
+  <Button
+    icon={{name: 'code'}}
+    backgroundColor='#03A9F4'
+    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+    title='VIEW NOW' />
+</Card>
 
-            }}>
-
-            </Button>
             </View>);
   }
 }
