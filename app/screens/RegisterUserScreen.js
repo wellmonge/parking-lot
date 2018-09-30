@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity } from "react-native";
-import { Card, Button, Text,SearchBar} from 'react-native-elements';
+import { FormLabel, FormInput, FormValidationMessage, Card, SearchBar} from 'react-native-elements';
 import { FontAwesome } from "@expo/vector-icons";
 
 const styles = {
@@ -10,7 +10,7 @@ const styles = {
   headerTitleStyle: {fontWeight: "bold"},
 }
 
-class ParkingLotScreen extends Component {
+class RegisterUserScreen extends Component {
   static navigationOptions = ({ navigation }) => {
       return {
               headerStyle: styles.headerStyle, 
@@ -24,7 +24,6 @@ class ParkingLotScreen extends Component {
                     navigation.navigate("DrawerToggle");
                 }}>
                     <FontAwesome 
-                        style={styles.iconAlign} 
                         name="bars" 
                         size={28} 
                         color="#333333"/>
@@ -46,12 +45,12 @@ class ParkingLotScreen extends Component {
   
   _retrieveData = async ()=> {
     try {
-        let response = await fetch(
-            'https://aniversario.amcom.com.br/sistema/estacionamento'
-        );
-        let responseJson = await response.json();
+      
+        let responseJson = {
 
-        this.setState({collaborator: responseJson});
+        };
+
+        this.setState({ dataItem: responseJson});
     } catch (error) {
         console.error(error);
     }
@@ -63,22 +62,29 @@ class ParkingLotScreen extends Component {
                 flex: 1,
                 backgroundColor: "#2980b9"
               }}
-            >            
-              <Card
-                title='HELLO WORLD'
-                image={require('../images/teste.jpg')}>
-                <Text style={{marginBottom: 10}}>
-                  The idea with React Native Elements is more about component structure than actual design.
-                </Text>
-                <Button
-                  icon={{name: 'code'}}
-                  backgroundColor='#03A9F4'
-                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                  title='VIEW NOW' />
-              </Card>
+            >          
+              <Card>
+                <FormLabel>Name</FormLabel>
+                <FormInput onChangeText={() =>{}}/>
+                <FormValidationMessage>Error message</FormValidationMessage>
 
+
+                <FormLabel>E-mail</FormLabel>
+                <FormInput autoFocus onChangeText={() =>{}}/>
+                <FormValidationMessage>Error message</FormValidationMessage>
+
+
+                <FormLabel>Password</FormLabel>
+                <FormInput onChangeText={() =>{}}/>
+                <FormValidationMessage>Error message</FormValidationMessage>
+
+
+                <FormLabel>Gender</FormLabel>
+                <FormInput onChangeText={() =>{}}/>
+                <FormValidationMessage>Error message</FormValidationMessage>
+              </Card>
             </View>);
   }
 }
 
-export default ParkingLotScreen;
+export default RegisterUserScreen ;

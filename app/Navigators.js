@@ -6,13 +6,14 @@ import {
   TabNavigator,
   TabBarBottom,
 } from "react-navigation";
-
+import { CustomDrawer } from "./components/CustomDrawer";
 //## APP COMPONENTS ###//
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import AuthLoadingScreen from './screens/AuthLoadingScreen';
 import ParkingLotScreen from './screens/ParkingLotScreen';
-import { CustomDrawer } from "./components/CustomDrawer";
+import RegisterUserScreen from "./screens/RegisterUserScreen";
+
 
 export const AuthStack = StackNavigator({
   AuthLoadingScreen: {
@@ -26,13 +27,19 @@ export const AuthStack = StackNavigator({
 export const HomeStack = StackNavigator({
   HomeScreen: {
     screen: HomeScreen
-  }
+  },
 });
 
 export const ParkingLotStack = StackNavigator({
   ParkingLotScreen:{ 
     screen: ParkingLotScreen
-  }
+  },
+});
+
+export const RegisterUserStack = StackNavigator({
+  RegisterUserScreen: {
+    screen: RegisterUserScreen
+  },
 });
 
 
@@ -40,6 +47,7 @@ export const Tabs = TabNavigator(
   {
     Home: HomeStack,
     ParkingLot: ParkingLotStack,
+    RegisterUser: RegisterUserStack
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -50,6 +58,8 @@ export const Tabs = TabNavigator(
           iconName = `ios-home${focused ? '' : '-outline'}`;
         } else if(routeName === 'ParkingLot') {
           iconName = `ios-car${focused ? '' : '-outline'}`;
+        } else if(routeName === 'RegisterUser') {
+          iconName = `ios-person${focused ? '' : '-outline'}`;
         }
         return <Ionicons name={iconName} size={30} color={tintColor} />;
       },
@@ -61,8 +71,8 @@ export const Tabs = TabNavigator(
     },
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
-    animationEnabled: false,
-    swipeEnabled: false,
+    animationEnabled: true,
+    swipeEnabled: true,
   }
 );
 
@@ -70,7 +80,7 @@ export const Tabs = TabNavigator(
 export const Drawer = DrawerNavigator(
   {
     Home: HomeStack,
-    ParkingLot: ParkingLotStack,
+    ParkingLot: ParkingLotStack
   },    
   {
     contentComponent: CustomDrawer,

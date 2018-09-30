@@ -2,7 +2,7 @@
     import { TouchableOpacity, View, FlatList, Platform } from "react-native";
     import { FontAwesome } from "@expo/vector-icons";
     const uuid = require('uuid/v1');
-    import { Card, Button, Avatar, Text, SearchBar } from 'react-native-elements'
+    import { Card, Button, Avatar, Text, SearchBar, ButtonGroup } from 'react-native-elements'
     import Ionicons from "../../node_modules/@expo/vector-icons/Ionicons";
 
     const styles = {
@@ -21,7 +21,7 @@
                     headerStyle: styles.headerStyle, 
                     headerTintColor: "#000", 
                     headerTitleStyle: styles.headerTitleStyle, 
-                    headerTitle: `AMCOM`,
+                    headerTitle: `AMCO66M`,
                     headerRight: (
                                 <TouchableOpacity
                                     style={styles.drawerToggle}
@@ -90,6 +90,17 @@
         render() {
             return (
                 <View style={{ backgroundColor: '#2980b9' }}> 
+                    <SearchBar
+                        lightTheme
+                        onChangeText={(text) => this.setState({text})}
+                        onClearText={function (params) {
+
+                        }}
+                        placeholder='Filtrar' />
+                    <ButtonGroup
+                        buttons={['Hello', 'World', 'Buttons']}
+                        containerStyle={{height: 50}}
+                        />
                     <FlatList
                         extraData={this.state.selected}
                         keyExtractor={this._keyExtractor}
